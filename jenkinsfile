@@ -4,20 +4,14 @@ pipeline {
     stages {
         stage('cloning') {
             steps {
-                git url: "https://github.com/Kartik71845/Docker-Portfolio.git",branch: "main"
+                git url: "https://github.com/Kartik71845/Docker-Portfolio.git", branch: "main"
                 echo 'cloning the code'
-            }
-        }
-        stage('building') {
-            steps {
-                sh "docker build -t nginx ."
-                echo 'building the code'
             }
         }
         stage('runnign the image') {
             steps {
-                sh "docker run -d --name nginx -p 8081:80 nginx"
-                echo 'cloning the code'
+                sh "docker compose up --build -d"
+                echo 'running the code'
             }
         }
     }
