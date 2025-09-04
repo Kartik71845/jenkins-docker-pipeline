@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  web:
+    build: .
+    container_name: nginx_web
+    ports:
+      - "8081:80"
