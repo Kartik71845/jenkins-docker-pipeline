@@ -1,7 +1,7 @@
 services:
   web:
     build: .
-    image: kartik71845/nginx_web:latest
+    image: nginx_web:latest
     container_name: nginx_web
     ports:
       - "8081:80"
