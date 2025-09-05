@@ -15,7 +15,7 @@ pipeline {
         }
         stage('runnign the image') {
             steps {
-                sh "docker compose up --build -d"
+                sh 'docker compose down || true && docker compose up -d --build'
                 echo 'running the code'
             }
         }
