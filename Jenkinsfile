@@ -2,29 +2,29 @@ pipeline {
     agent any
 
     stages {
-        stage('Hi') {
+        stage('Start') {
             steps {
-                echo 'Hi this is kartik'
+                echo 'Starting Jenkins pipeline for Docker project'
             }
         }
 
-        stage('cloning') {
+        stage('Get Code') {
             steps {
                 git url: "https://github.com/Kartik71845/Docker-Portfolio.git", branch: "main"
-                echo 'cloning the code'
+                echo 'Code cloned from GitHub repository'
             }
         }
 
-        stage('running the image') {
+        stage('Build and Run') {
             steps {
                 sh 'docker compose down || true && docker compose up -d --build'
-                echo 'running the code'
+                echo 'Docker image built and container is running'
             }
         }
 
         stage('Push to Docker Hub') {
             steps {
-                echo "Preparing to push image to Docker Hub..."
+                echo 'Uploading Docker image to Docker Hub'
                 withCredentials([usernamePassword(
                     credentialsId: 'dockerhub-creds',
                     usernameVariable: 'USER',
@@ -36,7 +36,7 @@ pipeline {
                         docker push $USER/nginx_web:latest
                     """
                 }
-                echo "Image successfully pushed to Docker Hub!"
+                echo 'Docker image successfully pushed'
             }
         }
     }
