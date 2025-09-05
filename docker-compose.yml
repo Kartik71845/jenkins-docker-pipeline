@@ -6,3 +6,4 @@ services:
     container_name: nginx_web
     ports:
       - "8081:80"
+    restart: always
