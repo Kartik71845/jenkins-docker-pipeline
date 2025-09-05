@@ -1,4 +1,4 @@
-# Base image of Nginx
+# This is the base image of Nginx
 FROM nginx:alpine
 
 # Copy our website so Nginx can show it
