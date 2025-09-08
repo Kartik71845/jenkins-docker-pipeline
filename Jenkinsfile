@@ -8,7 +8,7 @@ pipeline {
             }
         }
 
-        stage('Get Code') {
+        stage('Clone Code') {
             steps {
                 git url: "https://github.com/Kartik71845/Docker-Portfolio.git", branch: "main"
                 echo 'Code cloned from GitHub repository'
